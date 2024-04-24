@@ -91,7 +91,7 @@ const achievementList = {
 			check:function(){return g.XAxis.gt(c.d0);},
 			event:"axisBuy",
 			progress:function(){return "Not Completed!"},
-			reward:"+1% exotic matter",
+			reward:"+10% exotic matter",
 			flavor:"A Straight Line to the touch is worth a Circle to the sight"
 		},
 		102:{
@@ -101,7 +101,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!"},
 			prevReq:[101],
-			reward:"+2% exotic matter",
+			reward:"+20% exotic matter",
 			flavor:"Upward, not Northward"
 		},
 		103:{
@@ -111,7 +111,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!"},
 			prevReq:[102],
-			reward:"+3% exotic matter",
+			reward:"+30% exotic matter",
 			flavor:"It is Knowledge; it is Three Dimensions: open your eye once again and try to look steadily."
 		},
 		104:{
@@ -121,7 +121,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!"},
 			prevReq:[103],
-			reward:"+4% mastery power",
+			reward:"+40% mastery power",
 			flavor:"Time is clearly not our natural dimension. Thus it is that we are never really at home in time."
 		},
 		105:{
@@ -142,7 +142,7 @@ const achievementList = {
 			check:function(){return g.truetimePlayed>36000;},
 			event:"gameloop",
 			progress:function(){return achievement.percent(g.truetimePlayed.div(c.d3600),c.d10,0)},
-			reward:"Mastery power gain uses a slightly better formula (+0.001 formula exponent)",
+			reward:"Mastery power gain uses a slightly better formula (+0.100 formula exponent)",
 			flavor:"Every 10.000 hours in Africa, 600 minutes pass"
 		},
 		107:{
@@ -152,7 +152,7 @@ const achievementList = {
 			event:"gameloop",
 			progress:function(){return achievement.percent(stat.XAxisEffect,c.d4,1)},
 			prevReq:[101],
-			reward:"1 free Y axis",
+			reward:"3 free Y axis",
 			flavor:"Space is relative"
 		},
 		108:{
@@ -204,7 +204,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return achievement.percent(g.XAxis,c.d9,0)},
 			prevReq:[101],
-			reward:"+0.0004× Y Axis effect per Y Axis",
+			reward:"+0.040× Y Axis effect per Y Axis",
 			flavor:"6<sup>X<sup>2</sup></sup>"
 		},
 		114:{
@@ -213,7 +213,7 @@ const achievementList = {
 			check:function(){return MasteryE(11)&&MasteryE(21)&&MasteryE(31)&&MasteryE(41);},
 			event:"gameloop",
 			progress:function(){return achievement.percent(N([11,21,31,41].map(x=>MasteryE(x)?1:0).sum()),c.d4,0);},
-			get reward(){return "+{}% exotic matter (based on mastery power)";},
+			get reward(){return "+{1}% exotic matter (based on mastery power)";},
 			flavor:"I'm not for the left wing or the right wing--I'm for the whole bird.",
 			effect:function(y=this.yellowValue){
 				let out = g.masteryPower.add(c.d1).log10().pow(c.d2).div(c.e3).add(c.d1)
@@ -232,7 +232,7 @@ const achievementList = {
 			check:function(){return axisCodes.map(x => stat["free"+x+"Axis"]).reduce((x,y)=>x.max(y)).gt(c.d0);},
 			event:"gameloop",
 			progress:function(){return "Not Completed!";},
-			reward:"+1 exotic matter",
+			reward:"+100 exotic matter",
 			flavor:"It's morally wrong to allow a sucker to keep his money.",
 		}
 	},
@@ -243,7 +243,7 @@ const achievementList = {
 			check:function(){return true;},
 			event:"stardustReset",
 			progress:function(){return "Not Completed!";},
-			get reward(){return "Masteries in the fourth row are {}% stronger (based on total "+(g.achievement[301]?"normal ":"")+"axis)";},
+			get reward(){return "Masteries in the fourth row are {5}% stronger (based on total "+(g.achievement[301]?"normal ":"")+"axis)";},
 			flavor:"\"Look on my matter, ye Mighty, and despair!\"<br>Nothing beside remains.",
 			effect:function(y=this.yellowValue){
 				let out = stat.totalNormalAxis.add(c.d1).log10()
@@ -271,7 +271,7 @@ const achievementList = {
 					event:"gameloop",
 					progress:function(){return g[type+"Axis"].eq(c.d0)?achievement.percent(g.exoticmatter,c.e25,1):"Failed"},
 					prevReq:[[104,202,203,204][i]],
-					get reward(){return "+0."+(4-i)+"% stardust per "+type+" Axis (total: "+percentOrMult(Decimal.pow(Decimal.FC_NN(1,0,1.004-i/1e3),g[type+"Axis"]),2,true)+")"},
+					get reward(){return "+5."+(4-i)+"% stardust per "+type+" Axis (total: "+percentOrMult(Decimal.pow(Decimal.FC_NN(1,0,1.004-i/1e3),g[type+"Axis"]),2,true)+")"},
 					flavor:["Like all great art, it defies the tyrant Time.","Four axis good, two axis better","It seemed that this poor ignorant Monarch — as he called himself — was persuaded that the Straight Line which he called his Kingdom, and in which he passed his existence, constituted the whole of the world","That Point is a Being like ourselves, but confined to the non-dimensional Gulf. He is himself his own World, his own Universe; of any other than himself he can form no conception; he knows not Length, nor Breadth, nor Height, for he has had no experience of them; he has no cognizance even of the number Two; nor has he a thought of Plurality; for he is himself his One and All, being really Nothing."][i]
 				}
 			}
@@ -284,7 +284,7 @@ const achievementList = {
 			event:"gameloop",
 			progress:function(){return achievement.percent(stat.YAxisEffect,c.d0_4,0);},
 			prevReq:[102],
-			get reward(){return "{} free Y axis (based on mastery power)";},
+			get reward(){return "{1} free Y axis (based on mastery power)";},
 			flavor:"It's almost impossible to prevent Y axis from breeding, but when a Y axis reproduces evolution is halted and devolution commences. Y axis truly are the missing link of society",
 			effect:function(y=this.yellowValue){
 				let out = g.masteryPower.add(c.d1).dilate(c.d0_3).pow(c.d0_3)
@@ -301,7 +301,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!";},
 			prevReq:[104],
-			get reward(){return "All "+(unlocked("Dark Matter")?"normal axis":"axis")+" are {}% cheaper per "+(unlocked("Dark Matter")?"normal axis":"axis")+" owned (total: "+percentOrDiv(this.effect().pow(stat.totalNormalAxis),2,true)+")";},
+			get reward(){return "All "+(unlocked("Dark Matter")?"normal axis":"axis")+" are {2}% cheaper per "+(unlocked("Dark Matter")?"normal axis":"axis")+" owned (total: "+percentOrDiv(this.effect().pow(stat.totalNormalAxis),2,true)+")";},
 			effect:function(y=this.yellowValue){
 				let out = c.d0_99.div(N(2.2).pow(y))
 				if (study13.bound(192)) {out = out.pow(study13.bindingEff(192))}
@@ -318,7 +318,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!";},
 			prevReq:[207],
-			get reward(){return "Gain {}% more stardust per "+(unlocked("Dark Matter")?"normal axis":"axis")+" owned (total: "+percentOrMult(this.effect().pow(stat.totalNormalAxis),2,true)+")";},
+			get reward(){return "Gain {3}% more stardust per "+(unlocked("Dark Matter")?"normal axis":"axis")+" owned (total: "+percentOrMult(this.effect().pow(stat.totalNormalAxis),2,true)+")";},
 			effect:function(y=this.yellowValue){
 				let out = (y.eq(c.d1)?c.d0_06:y.eq(c.d0)?c.em3:y.mul(c.d0_059).add(c.em3)).mul(g.achievement[913]?c.d1_1:c.d1).add(c.d1)
 				if (study13.bound(192)) {out = out.pow(study13.bindingEff(192))}
@@ -335,7 +335,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!";},
 			prevReq:[208],
-			get reward(){return "+{}× to the effects of the first seven "+(unlocked("Dark Matter")?"normal axis":"axis")+" per "+(unlocked("Dark Matter")?"normal axis":"axis")+" owned (total: +"+this.effect().mul(stat.totalNormalAxis).noLeadFormat(3)+")";},
+			get reward(){return "+{5}× to the effects of the first seven "+(unlocked("Dark Matter")?"normal axis":"axis")+" per "+(unlocked("Dark Matter")?"normal axis":"axis")+" owned (total: +"+this.effect().mul(stat.totalNormalAxis).noLeadFormat(3)+")";},
 			effect:function(y=this.yellowValue){
 				let out = (y.eq(c.d1)?c.d7em4:y.eq(c.d0)?c.em4:c.d7.pow(y).div(c.e4)).mul(g.achievement[913]?c.d1_1:c.d1)
 				if (study13.bound(162)) {out = out.div(study13.bindingEff(162))}
@@ -353,7 +353,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return "Not Completed!";},
 			prevReq:[209],
-			get reward(){return "For every {} of each normal axis owned, gain a free axis of the previous type"+(Decimal.div(axisCodes.map(i=>g[i+"Axis"]).reduce((x,y)=>x.max(y)),achievement(210).effect()).gte(c.d80)?" (softcaps past 80)":"")},
+			get reward(){return "For every {5} of each normal axis owned, gain a free axis of the previous type"+(Decimal.div(axisCodes.map(i=>g[i+"Axis"]).reduce((x,y)=>x.max(y)),achievement(210).effect()).gte(c.d80)?" (softcaps past 80)":"")},
 			effect:function(y=this.yellowValue){
 				let out = y.eq(c.d1)?c.d64:y.eq(c.d0)?c.d80:c.d80.sub(y.pow(c.d2div3).mul(c.d16))
 				if (study13.bound(164)) {out = out.mul(study13.bindingEff(164))}
@@ -381,7 +381,7 @@ const achievementList = {
 			check:function(){return g.exoticmatter.gt(c.e80);},
 			event:"gameloop",
 			progress:function(){return achievement.percent(g.exoticmatter,c.e80,1);},
-			reward:"Z axis effect uses a better formula (+0.01 formula exponent)",
+			reward:"Z axis effect uses a better formula (+0.5 formula exponent)",
 			flavor:"Not very pretty but we sure know how to run things"
 		},
 		...(()=>{
@@ -394,7 +394,7 @@ const achievementList = {
 					check:function(){return g.exoticmatter.gt(req)&&(g.timeThisStardustReset<4)},
 					event:"gameloop",
 					progress:function(){return (g.timeThisStardustReset<4)?{percent:achievement.percent(g.exoticmatter,req,(i>1)?1:0),text:(4-g.timeThisStardustReset)+" seconds left"}:"Failed"},
-					reward:"The game runs 0.4% faster",
+					reward:"The game runs 5.0% faster",
 					flavor:["You think a five-minute mile is fast?","(Δt')²+(Δt)²=c²","You're made for the mile, not the 400, and the sooner you realize that, the better off you're gonna be.","In skating over thin ice our safety is in our speed."][i]
 				}
 			}
@@ -416,7 +416,7 @@ const achievementList = {
 			event:"axisBuy",
 			progress:function(){return (g.XAxis.gt(c.d1)||g.YAxis.gt(c.d3)||g.ZAxis.gt(c.d3)||g.WAxis.gt(c.d7))?"Failed":achievement.percent(axisCodes.slice(0,4).map(x=>g[x+"Axis"]).sumDecimals(),c.d14,0);},
 			prevReq:[104],
-			reward:"+33.7% stardust",
+			reward:"+55.5% stardust",
 			flavor:"x 4x15 Y 4X15 2 4X15 W 4x15"
 		}
 	},
@@ -427,7 +427,7 @@ const achievementList = {
 			check:function(){return g.stardustUpgrades[4]>0;},
 			event:"stardustUpgrade",
 			progress:function(){return "Not Completed!";},
-			get reward(){return "+{}% stardust (based on dark matter)";},
+			get reward(){return "+{2}% stardust (based on dark matter)";},
 			flavor:"This is not your average, everyday darkness. This is... ADVANCED darkness.",
 			effect:function(y=this.yellowValue){
 				let out = g.darkmatter.add(c.d1).log10().div(c.e2).add(c.d1)
@@ -446,7 +446,7 @@ const achievementList = {
 			check:function(){return g.exoticmatter.gt(c.inf)&&this.valence();},
 			event:"gameloop",
 			progress:function(){return this.valence()?achievement.percent(g.exoticmatter,c.inf,1):"Failed";},
-			get reward(){return "+30.8% dark matter per unassigned star (total: "+percentOrMult(N(1.308).pow(unspentStars()),2,true)+")"},
+			get reward(){return "+45.5% dark matter per unassigned star (total: "+percentOrMult(N(1.308).pow(unspentStars()),2,true)+")"},
 			flavor:"I made a noble gas joke, sadly nobody reacted",
 			valence:function(){return countTo(10).map(x => [1,2,3,4].map(y => g.star[10*x+y]?1:0).sum()%4).sum()===0;}
 		},
