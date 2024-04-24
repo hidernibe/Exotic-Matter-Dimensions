@@ -114,7 +114,7 @@ const basesave = {
 	axisAutobuyerOn:false,
 	axisAutobuyerUpgrades:0,
 	axisAutobuyerCaps:Array(12).fill("u"),
-	stars:0,
+	stars:15,
 	star:Object.fromEntries(starList.map(x=>[x,false])),
 	starContainerStyle:"Legacy",
 	starIdsShown:true,
